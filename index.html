@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Reproduzirvideo by izabely-furtado</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/izabely-furtado/ReproduzirVideo">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/izabely-furtado/ReproduzirVideo/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/izabely-furtado/ReproduzirVideo/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Reproduzirvideo</h1>
+          <p>Exercício 6 de 8 da Lista de Padrões de Projeto</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/izabely-furtado">izabely-furtado</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h3>
+<a id="diagrama-do-padrão-template-method" class="anchor" href="#diagrama-do-padr%C3%A3o-template-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Diagrama do Padrão Template Method</h3>
+
+<h3>
+<a id="explicação" class="anchor" href="#explica%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Explicação</h3>
+
+<p>Para definir o codec para reproduzir o vídeo escohido, sendo que isso só se saberá em tempo de execução. </p>
+
+<p>Começou-se, então, se definindo o que seria um vídeo (mostrado no diagrama), esse vídeo contem a definição do seu formato como um dos atributos no formato de um inteiro, este a qual tem um <strong>Enum</strong> equivalente a qual é equiparado. </p>
+
+<p>`public enum Form {
+    AVI(1), MP3(2), MP4(5);</p>
+
+<pre><code>public int valorFormato;
+
+Form(int valor){
+    this.valorFormato = valor;
+}
+
+public int getValor(){
+    return this.valorFormato;
+}
+</code></pre>
+
+<p>}`</p>
+
+<p>Caso corresponda a algum dos termos, este é reproduzido, se não é emitida uma exceção em tempo de execução.</p>
+
+<p>`public static Formato getFormato(int formato){</p>
+
+<pre><code>    if (formato == Form.AVI.getValor()){
+        return new FormatoAVI();
+    }
+    else if (formato == Form.MP3.getValor()){
+        return new FormatoMP3();
+    }
+    else if (formato == Form.MP4.getValor()){
+        return new FormatoMP4();
+    }
+    else{
+        throw new  RuntimeException("“A vida é um grande e completo texto, "
+                        + "que precisa de muitas vírgulas para ser escrito, "
+                        + "ainda que essas vírgulas assumam em alguns momentos formatos de lágrimas.” \n"
+                        + "―Augusto Cury");
+    }
+
+
+}
+</code></pre>
+
+<p>`</p>
+
+<p>Quanto a reprodução do vídeo em si, está já é setada no momento em que é construído o objeto, da seguinte forma:</p>
+
+<p>`</p>
+
+<p>Formato(String nome){</p>
+
+<pre><code>    carregaArquivoLegenda();
+    reproduzVideo();
+    finalizaReproducao();
+
+}
+</code></pre>
+
+<p>`</p>
+
+<p>Esses métodos, no entanto só serão implementados pelos seus descendentes, ou seja, cada formato concreto, da seguinte forma, por exemplo, no formato AVI:</p>
+
+<p>`public class FormatoAVI extends Formato{</p>
+
+<pre><code>FormatoAVI(){
+    super("AVI");
+}
+
+@Override
+public void carregaArquivoLegenda() {
+    System.out.println("Carregando Arquivo AVI");
+    System.out.println("Carregando Legenda");
+}
+
+@Override
+public void reproduzVideo() {
+    System.out.println("Reproduzindo Vídeo no Formato AVI");
+}
+
+@Override
+public void finalizaReproducao() {
+    System.out.println("The End");
+    System.out.println("Finalizando Reprodução do AVI");
+}
+</code></pre>
+
+<p>}
+`</p>
+
+<h3>
+<a id="motivação" class="anchor" href="#motiva%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a>Motivação</h3>
+
+<blockquote>
+<p>“Definir o esqueleto de um algoritmo em uma operação, postergando alguns passos para as subclasses. Template Method permite que subclasses redefinam certos passo de um algoritmo sem mudar a estrutura do mesmo.” - GAMMA, Erich et al. Padrões de Projeto: Soluções reutilizáveis de software orientado a objetos.</p>
+</blockquote>
+
+<p>Proporciona facilidade de alteração do algoritmo principal. </p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
