@@ -31,6 +31,7 @@ public class FormatoMP4 extends Formato{
     public void finalizaReproducao() {
         System.out.println("The End");
         System.out.println("Finalizando Reprodução do MP4");
+        System.out.println();
     }
     
 }

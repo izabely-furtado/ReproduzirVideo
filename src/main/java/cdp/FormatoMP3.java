@@ -31,6 +31,7 @@ public class FormatoMP3 extends Formato{
     public void finalizaReproducao() {
         System.out.println("The End");
         System.out.println("Finalizando Reprodução do MP3");
+        System.out.println();
     }
     
 }

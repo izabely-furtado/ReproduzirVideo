@@ -14,8 +14,6 @@ import cdp.Video;
  */
 public class app {
     public static void main(String []args){
-        Video v = new Video("xxx", 1234, "UltraHD", 1);
-        System.out.println(v);
-        v.executa();
+        ReproduzirVideo.reproduzFormato();
     }
 }

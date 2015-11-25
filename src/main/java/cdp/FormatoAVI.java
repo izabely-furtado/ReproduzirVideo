@@ -31,6 +31,7 @@ public class FormatoAVI extends Formato{
     public void finalizaReproducao() {
         System.out.println("The End");
         System.out.println("Finalizando Reprodução do AVI");
+        System.out.println();
     }
     
 }

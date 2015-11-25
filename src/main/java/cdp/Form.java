@@ -11,7 +11,7 @@ package cdp;
  * @author IzabelyFurtado
  */
 public enum Form {
-    AVI(1), MP3(2), MP4(5);
+    AVI(1), MP3(2), MP4(3);
     
     public int valorFormato;
     
