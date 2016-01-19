@@ -17,21 +17,20 @@ public class FormatoMP3 extends Formato{
     }
 
     @Override
-    public void carregaArquivoLegenda() {
-        System.out.println("Carregando Arquivo MP3");
-        System.out.println("Carregando Legenda");
+    public String carregaArquivoLegenda() {
+        return "Carregando Arquivo MP3 \n"
+             + "Carregando Legenda";
     }
 
     @Override
-    public void reproduzVideo() {
-        System.out.println("Reproduzindo Vídeo no Formato MP3");
+    public String reproduzVideo() {
+        return "Reproduzindo Vídeo no Formato MP3";
     }
 
     @Override
-    public void finalizaReproducao() {
-        System.out.println("The End");
-        System.out.println("Finalizando Reprodução do MP3");
-        System.out.println();
+    public String finalizaReproducao() {
+        return "The End"
+             + "Finalizando Reprodução do MP3 \n";
     }
     
 }

@@ -17,21 +17,20 @@ public class FormatoMP4 extends Formato{
     }
 
     @Override
-    public void carregaArquivoLegenda() {
-        System.out.println("Carregando Arquivo MP4");
-        System.out.println("Carregando Legenda");
+    public String carregaArquivoLegenda() {
+        return "Carregando Arquivo MP4 \n"
+             + "Carregando Legenda";
     }
 
     @Override
-    public void reproduzVideo() {
-        System.out.println("Reproduzindo Vídeo no Formato MP4");
+    public String reproduzVideo() {
+        return "Reproduzindo Vídeo no Formato MP4";
     }
 
     @Override
-    public void finalizaReproducao() {
-        System.out.println("The End");
-        System.out.println("Finalizando Reprodução do MP4");
-        System.out.println();
+    public String finalizaReproducao() {
+        return "The End"
+             + "Finalizando Reprodução do MP4 \n";
     }
     
 }

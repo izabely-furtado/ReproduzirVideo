@@ -9,16 +9,21 @@ public abstract class Formato {
     protected String nome;
     
     Formato(String nome){
-        carregaArquivoLegenda();
-        reproduzVideo();
-        finalizaReproducao();
+        this.nome = nome;
+        this.executaProcedimentos();
     }
-
-    public abstract void carregaArquivoLegenda();
     
-    public abstract void reproduzVideo();
+    public final void executaProcedimentos(){
+        System.out.println(this.carregaArquivoLegenda());
+        System.out.println(this.reproduzVideo());
+        System.out.println(this.finalizaReproducao());
+    }
+    
+    public abstract String carregaArquivoLegenda();
+    
+    public abstract String reproduzVideo();
 
-    public abstract void finalizaReproducao();
+    public abstract String finalizaReproducao();
     
     @Override
     public String toString(){
